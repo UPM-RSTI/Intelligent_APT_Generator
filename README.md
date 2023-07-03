@@ -1,6 +1,11 @@
 # Intelligent_APT_Generator
 TFM_ RUBEN_GONZALEZ_GOMEZ
 
+El desarrollo del proyecto fue realizado en una máquina virtual Ubuntu. 
+
+El agente sobre el que se desplegaron las APTs contaba con un sistema operativo Ubuntu, por lo que los perfiles de adversario que la red neuronal aprende están formados por comandos Linux.
+
+La versión de MITRE Caldera utilizada fue la 4.1.0.
 ## Instalación
 
 ### Paso 1: Instalar MITRE Caldera

@@ -49,12 +49,16 @@ if True:
     target = args.target
     if target == 1:
         steps = 4
+        learning_rate = 0.0001
     elif target == 2:
         steps = 6
+        learning_rate = 0.0007
     elif target == 3:
         steps = 7
+        learning_rate = 0.001
+
     # Instanciamos el objeto que crea y entrena a la red neuronal
-    trainer = trainer.Trainer(args.num_epochs,steps,abilities,100000,target) 
+    trainer = trainer.Trainer(args.num_epochs,steps,abilities,100000,target,learning_rate) 
     action_sequence,attack = trainer.train(args.evaluate)
     # Creamos la operación en CALDERA
     api.create_operation(args.cookie,action_sequence,attack)

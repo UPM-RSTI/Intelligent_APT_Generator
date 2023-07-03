@@ -3,7 +3,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 import calculateReward
-import NeuronalNetowork
+import NeuralNetowork
 
 # Definir el entorno personalizado
 class CustomEnvironment:
@@ -107,13 +107,14 @@ class ReplayBuffer:
 
 
 class Trainer:
-    def __init__(self, num_episodes, max_steps, actions, replay_buffer_max_length, target):
+    def __init__(self, num_episodes, max_steps, actions, replay_buffer_max_length, target,_learning_rate):
         self.actions = actions
         self.num_actions = len(actions)
         self.num_episodes = num_episodes
         self.max_steps = max_steps
         self.replay_buffer_max_length = replay_buffer_max_length
         self.target = target
+        self._learning_rate = _learning_rate
     
     def get_action_position(self,id):
         position = None
@@ -126,7 +127,7 @@ class Trainer:
 
     def train(self, evaluate_every):
         env = CustomEnvironment(self.actions,self.target)
-        agent = NeuronalNetowork.DQNAgent(self.actions, self.num_actions)
+        agent = NeuralNetowork.DQNAgent(self.actions, self.num_actions,self._learning_rate)
         replay_buffer = ReplayBuffer(self.replay_buffer_max_length)
 
         best_action_sequence = [env.target]
